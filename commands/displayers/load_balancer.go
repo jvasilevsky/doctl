@@ -36,6 +36,7 @@ func (lb *LoadBalancer) Cols() []string {
 	return []string{
 		"ID",
 		"IP",
+		"IPv6",
 		"Name",
 		"Status",
 		"Created",
@@ -57,6 +58,7 @@ func (lb *LoadBalancer) ColMap() map[string]string {
 	return map[string]string{
 		"ID":                           "ID",
 		"IP":                           "IP",
+		"IPv6":                         "IPv6",
 		"Name":                         "Name",
 		"Status":                       "Status",
 		"Created":                      "Created At",
@@ -106,6 +108,9 @@ func (lb *LoadBalancer) KV() []map[string]any {
 		}
 		if l.SizeUnit > 0 {
 			o["SizeUnit"] = l.SizeUnit
+		}
+		if l.IPv6 != "" {
+			o["IPv6"] = l.IPv6
 		}
 		out = append(out, o)
 	}
